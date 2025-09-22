@@ -1,7 +1,7 @@
 services:
-  postgres:
+  postgres_rag_challenge:
     image: pgvector/pgvector:pg17
-    container_name: postgres_rag
+    container_name: postgres_rag_challenge
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,7 +20,7 @@ services:
   bootstrap_vector_ext:
     image: pgvector/pgvector:pg17
     depends_on:
-      postgres:
+      postgres_rag_challenge:
         condition: service_healthy
     entrypoint: ["/bin/sh", "-c"]
     command: >
